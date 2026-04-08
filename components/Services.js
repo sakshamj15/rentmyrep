@@ -4,13 +4,13 @@ const services = [
   {
     icon: Layers,
     title: 'Google Workspace Setup',
-    description: 'Full end-to-end Google Workspace account provisioning and mailbox configuration.',
+    description: 'Complete Google Workspace account provisioning and mailbox configuration for your business.',
     bullets: ['MX record configuration', 'Workspace admin setup', 'User provisioning & verification'],
   },
   {
     icon: Monitor,
     title: 'Microsoft 365 Setup',
-    description: 'Complete Microsoft 365 tenant setup with Exchange Online and Outlook integration.',
+    description: 'Full Microsoft 365 tenant setup with Exchange Online and Outlook integration.',
     bullets: ['Tenant creation & DNS', 'Exchange Online config', 'Autodiscover & MX routing'],
   },
   {
@@ -34,7 +34,7 @@ const services = [
   {
     icon: Lock,
     title: 'DMARC Implementation',
-    description: 'DMARC policy deployment from monitoring to enforcement with reporting.',
+    description: 'DMARC policy deployment from monitoring to enforcement with full reporting.',
     bullets: ['p=none → p=reject rollout', 'RUA/RUF reporting setup', 'Subdomain policy handling'],
   },
 ]
@@ -45,13 +45,13 @@ export default function Services() {
       <div className="mx-auto max-w-6xl w-full border-x border-gray-200 border-dashed px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="text-center mb-12">
           <div className="inline-flex items-center px-3 py-1 rounded-full border border-blue-200 bg-blue-50 text-[#2563EB] text-xs font-semibold uppercase tracking-wider mb-4">
-            Services
+            Our Services
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628]">
-            Everything You Need to Launch<br className="hidden sm:block" /> Clean Mailboxes
+            What We Do
           </h2>
           <p className="mt-4 text-gray-600 max-w-xl mx-auto">
-            Our reps handle every layer of email infrastructure, from domain verification to DMARC enforcement.
+            From initial domain setup to full deliverability compliance — we handle every layer of your email infrastructure so you don&apos;t have to.
           </p>
         </div>
 

@@ -2,14 +2,12 @@
 
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
-import TrustedBy from '@/components/TrustedBy'
-import ProblemSolution from '@/components/ProblemSolution'
 import Services from '@/components/Services'
+import AboutUs from '@/components/AboutUs'
+import WhyChooseUs from '@/components/WhyChooseUs'
 import HowItWorks from '@/components/HowItWorks'
-import ForPlatforms from '@/components/ForPlatforms'
-import Pricing from '@/components/Pricing'
 import FAQ from '@/components/FAQ'
-import CTASection from '@/components/CTASection'
+import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -17,14 +15,12 @@ export default function Home() {
     <main>
       <Header />
       <Hero />
-      <TrustedBy />
-      <ProblemSolution />
       <Services />
+      <AboutUs />
+      <WhyChooseUs />
       <HowItWorks />
-      <ForPlatforms />
-      <Pricing />
       <FAQ />
-      <CTASection />
+      <Contact />
       <Footer />
     </main>
   )

@@ -1,13 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { UserCheck, Menu, X } from 'lucide-react'
+import { UserCheck, Menu, X, Phone } from 'lucide-react'
 
 const navLinks = [
   { label: 'Services', href: '#services' },
+  { label: 'About Us', href: '#about' },
   { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'For Platforms', href: '#for-platforms' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export default function Header() {
@@ -42,15 +42,16 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-3">
             <a
               href="tel:+919306412332"
-              className="inline-flex items-center px-4 py-2 border border-[#2563EB] text-[#2563EB] rounded-full text-sm font-medium hover:bg-blue-50 transition-all"
+              className="inline-flex items-center gap-2 px-4 py-2 border border-gray-200 text-gray-700 rounded-full text-sm font-medium hover:border-[#2563EB] hover:text-[#2563EB] transition-all"
             >
-              Contact Us
+              <Phone className="w-3.5 h-3.5" />
+              +91 93064 12332
             </a>
             <a
-              href="tel:+919306412332"
+              href="#contact"
               className="inline-flex items-center px-4 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-full text-sm font-medium transition-all"
             >
-              Get Started
+              Contact Us
             </a>
           </div>
 
@@ -81,15 +82,16 @@ export default function Header() {
               <div className="flex flex-col gap-2 mt-3 pt-3 border-t border-gray-100">
                 <a
                   href="tel:+919306412332"
-                  className="text-center py-2.5 border border-[#2563EB] text-[#2563EB] rounded-full text-sm font-medium"
+                  className="text-center py-2.5 border border-gray-200 text-gray-700 rounded-full text-sm font-medium"
                 >
-                  Contact Us
+                  +91 93064 12332
                 </a>
                 <a
-                  href="tel:+919306412332"
+                  href="#contact"
+                  onClick={() => setMobileOpen(false)}
                   className="text-center py-2.5 bg-[#2563EB] text-white rounded-full text-sm font-medium"
                 >
-                  Get Started
+                  Contact Us
                 </a>
               </div>
             </nav>
