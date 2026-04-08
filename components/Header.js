@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { UserCheck, Menu, X, Phone } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
+import Image from 'next/image'
 
 const navLinks = [
   { label: 'Services', href: '#services' },
@@ -18,11 +19,8 @@ export default function Header() {
       <div className="mx-auto max-w-6xl w-full border-x border-gray-200 border-dashed px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 text-[#0A1628] font-bold text-lg">
-            <div className="w-8 h-8 bg-[#2563EB] rounded-lg flex items-center justify-center">
-              <UserCheck className="w-4 h-4 text-white" />
-            </div>
-            RentMyRep
+          <a href="#" className="flex items-center">
+            <Image src="/logo.svg" alt="RentMyRep" width={160} height={44} priority />
           </a>
 
           {/* Desktop nav */}

@@ -5,9 +5,14 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "RentMyRep — Human Reps for Email Infrastructure Setup",
+  title: "RentMyRep — Professional Email Infrastructure Setup",
   description:
-    "White-label human reps for Google Workspace & Microsoft 365 account setup. DNS, SPF, DKIM, DMARC — handled end-to-end at scale.",
+    "Professional Google Workspace & Microsoft 365 setup, DNS, SPF, DKIM, and DMARC — handled end-to-end by experienced professionals.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
 };
 
 export const viewport: Viewport = {

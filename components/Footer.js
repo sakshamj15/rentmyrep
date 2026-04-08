@@ -1,4 +1,5 @@
-import { UserCheck, Phone, MapPin } from 'lucide-react'
+import { Phone, MapPin } from 'lucide-react'
+import Image from 'next/image'
 
 const serviceLinks = [
   { label: 'Google Workspace Setup', href: '#services' },
@@ -24,11 +25,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <a href="#" className="flex items-center gap-2 text-white font-bold text-lg mb-4">
-              <div className="w-8 h-8 bg-[#2563EB] rounded-lg flex items-center justify-center">
-                <UserCheck className="w-4 h-4 text-white" />
-              </div>
-              RentMyRep
+            <a href="#" className="flex items-center mb-4">
+              <Image src="/logo.svg" alt="RentMyRep" width={160} height={44} className="brightness-0 invert" />
             </a>
             <p className="text-blue-200/60 text-sm leading-relaxed mb-5">
               Professional email infrastructure setup and management. Done right, the first time.
