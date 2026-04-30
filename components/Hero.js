@@ -1,58 +1,210 @@
-'use client'
-
-import { ArrowRight, Phone } from 'lucide-react'
-
-const stats = [
-  { value: '2,000+', label: 'Domains Configured' },
-  { value: '99.9%', label: 'Deliverability Rate' },
-  { value: '<24hr', label: 'Average Setup Time' },
-  { value: '10+ Years', label: 'Industry Experience' },
+const inboxRows = [
+  {
+    from: 'noreply@yourdomain.com',
+    subj: 'SPF · DKIM · DMARC all aligned',
+    tag: 'Inbox',
+    status: 'ok',
+  },
+  {
+    from: 'team@yourdomain.com',
+    subj: 'Google Workspace · MX verified',
+    tag: 'Inbox',
+    status: 'ok',
+  },
+  {
+    from: 'billing@yourdomain.com',
+    subj: 'Microsoft 365 · Autodiscover OK',
+    tag: 'Inbox',
+    status: 'ok',
+  },
+  {
+    from: 'competitor.com',
+    subj: 'Misconfigured SPF, no DKIM',
+    tag: 'Spam',
+    status: 'warn',
+  },
 ]
+
+function InboxCard() {
+  return (
+    <div
+      style={{
+        border: '1px solid var(--rule)',
+        background: 'var(--paper)',
+        boxShadow: '0 24px 60px -32px rgba(20,17,13,0.25)',
+        overflow: 'hidden',
+      }}
+    >
+      <div
+        className="font-mono-ds uppercase flex items-center gap-2"
+        style={{
+          padding: '10px 14px',
+          borderBottom: '1px solid var(--rule)',
+          background: 'var(--bg-deep)',
+          fontSize: 10,
+          letterSpacing: '0.16em',
+          color: 'var(--ink-soft)',
+        }}
+      >
+        <div className="flex gap-1.5 mr-1.5">
+          {[0, 1, 2].map((i) => (
+            <span
+              key={i}
+              style={{
+                width: 9,
+                height: 9,
+                borderRadius: '50%',
+                background: '#c9c2af',
+              }}
+            />
+          ))}
+        </div>
+        <div>inbox · primary</div>
+      </div>
+      {inboxRows.map((row, idx) => (
+        <div
+          key={idx}
+          className="grid items-center"
+          style={{
+            gridTemplateColumns: '16px 1fr auto',
+            gap: 14,
+            padding: '14px 18px',
+            borderBottom:
+              idx === inboxRows.length - 1
+                ? 'none'
+                : '1px solid var(--rule)',
+            fontSize: 13,
+          }}
+        >
+          <div
+            className="flex items-center justify-center"
+            style={{
+              width: 14,
+              height: 14,
+              borderRadius: '50%',
+              background: row.status === 'warn' ? 'var(--warn)' : 'var(--ok)',
+              color: '#f4f1ea',
+              fontSize: 9,
+            }}
+          >
+            {row.status === 'warn' ? '!' : '✓'}
+          </div>
+          <div className="flex flex-col gap-0.5 min-w-0">
+            <div style={{ fontWeight: 500 }}>{row.from}</div>
+            <div
+              className="truncate"
+              style={{ color: 'var(--ink-soft)', fontSize: 12 }}
+            >
+              {row.subj}
+            </div>
+          </div>
+          <div
+            className="font-mono-ds uppercase"
+            style={{
+              fontSize: 9,
+              letterSpacing: '0.16em',
+              padding: '4px 8px',
+              border: `1px solid ${
+                row.status === 'warn' ? 'var(--warn)' : 'var(--ok)'
+              }`,
+              color: row.status === 'warn' ? 'var(--warn)' : 'var(--ok)',
+            }}
+          >
+            {row.tag}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
 
 export default function Hero() {
   return (
-    <section className="bg-white dot-grid relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/40 to-white pointer-events-none" />
-
-      <div className="mx-auto max-w-6xl w-full border-x border-gray-200 border-dashed px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="py-20 md:py-32 text-center">
-
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0A1628] leading-tight mb-6">
-            Professional Email Infrastructure
-            <br />
-            <span className="text-[#2563EB]">Setup & Management</span>
-          </h1>
-
-          <p className="max-w-2xl mx-auto text-lg text-gray-600 mb-10 leading-relaxed">
-            We handle Google Workspace and Microsoft 365 account setup, DNS configuration,
-            SPF, DKIM, and DMARC — end-to-end, handled by experienced professionals.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-full text-sm font-medium transition-all shadow-md hover:shadow-lg"
+    <section
+      className="border-b"
+      style={{ borderColor: 'var(--rule)', padding: '88px 0 80px' }}
+    >
+      <div className="ds-page">
+        <div className="grid gap-12 lg:gap-16 items-end grid-cols-1 lg:[grid-template-columns:1.4fr_1fr]">
+          <div>
+            <span className="ds-eyebrow">
+              Professional Email Infrastructure · Setup &amp; Management
+            </span>
+            <h1
+              className="font-serif text-balance"
+              style={{
+                fontWeight: 500,
+                fontSize: 'clamp(48px, 7vw, 84px)',
+                lineHeight: 0.98,
+                letterSpacing: '-0.015em',
+                margin: '18px 0 28px',
+              }}
             >
-              Get in Touch
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
-              href="tel:+919306412332"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 hover:border-[#2563EB] hover:text-[#2563EB] rounded-full text-sm font-medium transition-all"
+              Emails that{' '}
+              <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>
+                actually
+              </em>
+              <br />
+              land in inboxes.
+            </h1>
+            <p
+              style={{
+                fontSize: 17,
+                color: 'var(--ink-soft)',
+                maxWidth: 480,
+                marginBottom: 32,
+              }}
             >
-              <Phone className="w-4 h-4" />
-              +91 93064 12332
-            </a>
+              We handle Google Workspace and Microsoft 365 account setup, DNS
+              configuration, SPF, DKIM, and DMARC — end-to-end, by experienced
+              professionals. No templates, no abandoned tickets.
+            </p>
+            <div className="flex flex-wrap gap-3.5 items-center">
+              <a
+                href="#contact"
+                className="uppercase transition-colors"
+                style={{
+                  padding: '14px 24px',
+                  background: 'var(--accent)',
+                  color: '#f4f1ea',
+                  fontSize: 13,
+                  fontWeight: 500,
+                  letterSpacing: '0.08em',
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.background = '#233a2c')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.background = 'var(--accent)')
+                }
+              >
+                Get in touch
+              </a>
+              <a
+                href="#services"
+                className="uppercase transition-colors"
+                style={{
+                  padding: '14px 24px',
+                  border: '1px solid var(--ink)',
+                  color: 'var(--ink)',
+                  fontSize: 13,
+                  fontWeight: 500,
+                  letterSpacing: '0.08em',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'var(--ink)'
+                  e.currentTarget.style.color = 'var(--bg)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'transparent'
+                  e.currentTarget.style.color = 'var(--ink)'
+                }}
+              >
+                View services →
+              </a>
+            </div>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 border border-gray-200 rounded-2xl bg-white/80 backdrop-blur p-6 md:divide-x md:divide-gray-200">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-[#0A1628]">{stat.value}</div>
-                <div className="text-sm text-gray-500 mt-1">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+          <InboxCard />
         </div>
       </div>
     </section>

@@ -6,15 +6,9 @@
   <circle cx="33" cy="31" r="7.5" fill="#2563EB"/>
   <path d="M29.5 31.2L32 33.8L36.5 28.2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- Wordmark: "Rent" bold navy -->
-  <text x="56" y="17" font-family="Inter, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#0A1628">Rent</text>
+  <!-- Wordmark line 1: "Wayne" -->
+  <text x="56" y="20" font-family="Inter, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#0A1628" letter-spacing="-0.3">Wayne</text>
 
-  <!-- Wordmark: "My" medium blue -->
-  <text x="94" y="17" font-family="Inter, -apple-system, sans-serif" font-weight="500" font-size="15" fill="#2563EB">My</text>
-
-  <!-- Wordmark: "Rep" bold navy -->
-  <text x="115" y="17" font-family="Inter, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#0A1628">Rep</text>
-
-  <!-- Tagline -->
-  <text x="57" y="31" font-family="Inter, -apple-system, sans-serif" font-weight="400" font-size="8.5" fill="#6B7280" letter-spacing="0.5">Email Infrastructure Experts</text>
+  <!-- Wordmark line 2: "ENTERPRISES" -->
+  <text x="56" y="34" font-family="Inter, -apple-system, sans-serif" font-weight="600" font-size="8.5" fill="#2563EB" letter-spacing="2.4">ENTERPRISES</text>
 </svg>

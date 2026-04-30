@@ -54,7 +54,7 @@ export default function ProblemSolution() {
               <div className="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center">
                 <CheckCircle2 className="w-5 h-5 text-[#2563EB]" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900">The RentMyRep Way</h3>
+              <h3 className="text-lg font-semibold text-gray-900">The Wayne Enterprises Way</h3>
             </div>
             <ul className="space-y-3">
               {solutions.map((item) => (

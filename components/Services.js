@@ -1,81 +1,162 @@
-import { Layers, Monitor, Globe, Shield, Key, Lock } from 'lucide-react'
+import SectionHead from './SectionHead'
 
 const services = [
   {
-    icon: Layers,
-    title: 'Google Workspace Setup',
-    description: 'Complete Google Workspace account provisioning and mailbox configuration for your business.',
-    bullets: ['MX record configuration', 'Workspace admin setup', 'User provisioning & verification'],
+    title: ['Google Workspace', 'Setup'],
+    desc: 'Complete Google Workspace account provisioning and mailbox configuration for your business.',
+    items: [
+      'MX record configuration',
+      'Workspace admin setup',
+      'User provisioning & verification',
+    ],
   },
   {
-    icon: Monitor,
-    title: 'Microsoft 365 Setup',
-    description: 'Full Microsoft 365 tenant setup with Exchange Online and Outlook integration.',
-    bullets: ['Tenant creation & DNS', 'Exchange Online config', 'Autodiscover & MX routing'],
+    title: ['Microsoft 365', 'Setup'],
+    desc: 'Full Microsoft 365 tenant setup with Exchange Online and Outlook integration.',
+    items: [
+      'Tenant creation & DNS',
+      'Exchange Online config',
+      'Autodiscover & MX routing',
+    ],
   },
   {
-    icon: Globe,
-    title: 'DNS Management',
-    description: 'Accurate DNS configuration across all major registrars and hosting providers.',
-    bullets: ['Multi-registrar support', 'DNS propagation verification', 'Record auditing & cleanup'],
+    title: ['DNS', 'Management'],
+    desc: 'Accurate DNS configuration across all major registrars and hosting providers.',
+    items: [
+      'Multi-registrar support',
+      'DNS propagation verification',
+      'Record auditing & cleanup',
+    ],
   },
   {
-    icon: Shield,
-    title: 'SPF Configuration',
-    description: 'Properly structured SPF records that pass authentication without breaking other services.',
-    bullets: ['Flat SPF record design', 'Lookup limit management', 'Third-party sender inclusion'],
+    title: ['SPF', 'Configuration'],
+    desc: 'Properly structured SPF records that pass authentication without breaking other services.',
+    items: [
+      'Flat SPF record design',
+      'Lookup limit management',
+      'Third-party sender inclusion',
+    ],
   },
   {
-    icon: Key,
-    title: 'DKIM Setup',
-    description: 'DKIM keys generated, published, and validated for reliable email signing.',
-    bullets: ['2048-bit key generation', 'Selector configuration', 'Rotation scheduling'],
+    title: ['DKIM', 'Setup'],
+    desc: 'DKIM keys generated, published, and validated for reliable email signing.',
+    items: [
+      '2048-bit key generation',
+      'Selector configuration',
+      'Rotation scheduling',
+    ],
   },
   {
-    icon: Lock,
-    title: 'DMARC Implementation',
-    description: 'DMARC policy deployment from monitoring to enforcement with full reporting.',
-    bullets: ['p=none → p=reject rollout', 'RUA/RUF reporting setup', 'Subdomain policy handling'],
+    title: ['DMARC', 'Implementation'],
+    desc: 'DMARC policy deployment from monitoring to enforcement with full reporting.',
+    items: [
+      'p=none → p=reject rollout',
+      'RUA/RUF reporting setup',
+      'Subdomain policy handling',
+    ],
   },
 ]
 
 export default function Services() {
   return (
-    <section id="services" className="bg-gray-50 border-y border-gray-200">
-      <div className="mx-auto max-w-6xl w-full border-x border-gray-200 border-dashed px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center px-3 py-1 rounded-full border border-blue-200 bg-blue-50 text-[#2563EB] text-xs font-semibold uppercase tracking-wider mb-4">
-            Our Services
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628]">
-            What We Do
-          </h2>
-          <p className="mt-4 text-gray-600 max-w-xl mx-auto">
-            From initial domain setup to full deliverability compliance — we handle every layer of your email infrastructure so you don&apos;t have to.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map(({ icon: Icon, title, description, bullets }) => (
-            <div
-              key={title}
-              className="bg-white rounded-2xl border border-gray-200 p-6 hover:border-[#2563EB]/40 hover:shadow-md transition-all group"
-            >
-              <div className="w-10 h-10 rounded-xl bg-[#EFF6FF] flex items-center justify-center mb-4 group-hover:bg-[#2563EB] transition-colors">
-                <Icon className="w-5 h-5 text-[#2563EB] group-hover:text-white transition-colors" />
-              </div>
-              <h3 className="font-semibold text-[#0A1628] mb-2">{title}</h3>
-              <p className="text-sm text-gray-500 mb-4 leading-relaxed">{description}</p>
-              <ul className="space-y-1.5">
-                {bullets.map((b) => (
-                  <li key={b} className="flex items-center gap-2 text-xs text-gray-500">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#2563EB] shrink-0" />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+    <section
+      id="services"
+      className="border-b"
+      style={{ borderColor: 'var(--rule)', padding: '96px 0' }}
+    >
+      <div className="ds-page">
+        <SectionHead
+          eyebrow="Our services"
+          title="What we do."
+          description="From initial domain setup to full deliverability compliance — we handle every layer of your email infrastructure so you don't have to."
+        />
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+          style={{
+            borderTop: '1px solid var(--rule)',
+            borderLeft: '1px solid var(--rule)',
+          }}
+        >
+          {services.map((s, idx) => {
+            const num = String(idx + 1).padStart(2, '0')
+            return (
+              <article
+                key={idx}
+                className="transition-colors group"
+                style={{
+                  borderRight: '1px solid var(--rule)',
+                  borderBottom: '1px solid var(--rule)',
+                  padding: '32px 28px 36px',
+                  background: 'var(--paper)',
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.background = 'var(--bg-deep)')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.background = 'var(--paper)')
+                }
+              >
+                <span
+                  className="font-mono-ds"
+                  style={{
+                    fontSize: 10,
+                    letterSpacing: '0.18em',
+                    color: 'var(--accent)',
+                  }}
+                >
+                  {num} / 06
+                </span>
+                <h3
+                  className="font-serif"
+                  style={{
+                    fontWeight: 500,
+                    fontSize: 28,
+                    lineHeight: 1.1,
+                    margin: '28px 0 12px',
+                  }}
+                >
+                  {s.title[0]}
+                  <br />
+                  {s.title[1]}
+                </h3>
+                <p
+                  style={{
+                    fontSize: 13.5,
+                    color: 'var(--ink-soft)',
+                    margin: '0 0 20px',
+                  }}
+                >
+                  {s.desc}
+                </p>
+                <ul className="flex flex-col gap-2 list-none p-0 m-0">
+                  {s.items.map((item, i) => (
+                    <li
+                      key={i}
+                      className="font-mono-ds relative"
+                      style={{
+                        fontSize: 11,
+                        letterSpacing: '0.04em',
+                        color: 'var(--ink-soft)',
+                        paddingLeft: 18,
+                      }}
+                    >
+                      <span
+                        style={{
+                          position: 'absolute',
+                          left: 0,
+                          top: 0,
+                          color: 'var(--accent)',
+                        }}
+                      >
+                        →
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            )
+          })}
         </div>
       </div>
     </section>
