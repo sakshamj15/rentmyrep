@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "RentMyRep — Professional Email Infrastructure Setup",
+  title: "Wayne Enterprises — Professional Email Infrastructure Setup",
   description:
     "Professional Google Workspace & Microsoft 365 setup, DNS, SPF, DKIM, and DMARC — handled end-to-end by experienced professionals.",
   icons: {

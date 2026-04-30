@@ -1,7 +1,7 @@
 import { Check } from 'lucide-react'
 
 const features = [
-  { title: 'White-label API', desc: 'Your brand, our ops. No RentMyRep branding visible to your customers.' },
+  { title: 'White-label API', desc: 'Your brand, our ops. No Wayne Enterprises branding visible to your customers.' },
   { title: 'Bulk requests (1–10K domains)', desc: 'Handle single setups or massive onboarding waves with the same API.' },
   { title: 'Status webhooks', desc: 'Real-time callbacks when mailboxes are configured, failed, or need attention.' },
   { title: 'SLA guarantee', desc: 'Sub-24-hour completion on standard requests, with priority lanes available.' },

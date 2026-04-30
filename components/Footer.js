@@ -26,7 +26,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <a href="#" className="flex items-center mb-4">
-              <Image src="/logo.svg" alt="RentMyRep" width={160} height={44} className="brightness-0 invert" />
+              <Image src="/logo.svg" alt="Wayne Enterprises" width={160} height={44} className="brightness-0 invert" />
             </a>
             <p className="text-blue-200/60 text-sm leading-relaxed mb-5">
               Professional email infrastructure setup and management. Done right, the first time.
@@ -35,6 +35,9 @@ export default function Footer() {
               <a href="tel:+919306412332" className="flex items-center gap-2 text-sm text-[#2563EB] hover:text-blue-400 transition-colors">
                 <Phone className="w-3.5 h-3.5" />
                 +91 93064 12332
+              </a>
+              <a href="mailto:finance@wayneenterprises.in" className="flex items-center gap-2 text-sm text-blue-200/60 hover:text-white transition-colors break-all">
+                Finance: finance@wayneenterprises.in
               </a>
             </div>
           </div>
@@ -86,7 +89,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-blue-200/40">
-          <span>© 2026 RentMyRep · A Wayne Enterprises Initiative. All rights reserved.</span>
+          <span>© 2026 Wayne Enterprises®. All rights reserved.</span>
           <div className="flex gap-4">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>

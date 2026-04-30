@@ -37,7 +37,7 @@ export default function AboutUs() {
               A Trusted Partner for Email Infrastructure
             </h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              RentMyRep was built to solve a problem every growing business faces — getting email infrastructure set up correctly, reliably, and without the hassle.
+              Wayne Enterprises was built to solve a problem every growing business faces — getting email infrastructure set up correctly, reliably, and without the hassle.
             </p>
             <p className="text-gray-600 leading-relaxed mb-4">
               We work with businesses, agencies, and service providers who need Google Workspace and Microsoft 365 accounts configured properly — with the right DNS records, SPF, DKIM, and DMARC policies — so their emails actually land in inboxes.

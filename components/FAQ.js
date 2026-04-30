@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: 'Is the API truly white-label?',
-    a: 'Yes. When you use the white_label: true flag in API requests, there is zero RentMyRep branding in any customer-facing communication. Your customers see only your brand.',
+    a: 'Yes. When you use the white_label: true flag in API requests, there is zero Wayne Enterprises branding in any customer-facing communication. Your customers see only your brand.',
   },
   {
     q: 'What SLAs do you offer?',
