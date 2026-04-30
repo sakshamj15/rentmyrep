@@ -1,185 +1,149 @@
 'use client'
 
-import { useState } from 'react'
-import { Phone, MapPin, Send, CheckCircle } from 'lucide-react'
+import SectionHead from './SectionHead'
 
-export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-
-  function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault()
-    setLoading(true)
-    // Build mailto with form data
-    const body = `Name: ${form.name}%0APhone: ${form.phone}%0AEmail: ${form.email}%0A%0AMessage:%0A${form.message}`
-    const subject = encodeURIComponent(form.subject || 'Enquiry from RentMyRep Website')
-    window.location.href = `mailto:workwithnikhilnainwani@gmail.com?subject=${subject}&body=${body}` // eslint-disable-line
-    setTimeout(() => {
-      setLoading(false)
-      setSubmitted(true)
-    }, 800)
+function Field({ label, type = 'text', placeholder, full = false, textarea = false }) {
+  const baseStyle = {
+    background: 'transparent',
+    border: 'none',
+    borderBottom: '1px solid var(--rule)',
+    color: 'var(--ink)',
+    fontSize: 15,
+    padding: '10px 0',
+    outline: 'none',
+    transition: 'border-color .15s',
+    width: '100%',
   }
 
   return (
-    <section id="contact" className="bg-gray-50 border-t border-gray-200">
-      <div className="mx-auto max-w-6xl w-full border-x border-gray-200 border-dashed px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center px-3 py-1 rounded-full border border-blue-200 bg-blue-50 text-[#2563EB] text-xs font-semibold uppercase tracking-wider mb-4">
-            Contact Us
+    <div className={`flex flex-col gap-1.5 ${full ? 'md:col-span-2' : ''}`}>
+      <label
+        className="font-mono-ds uppercase"
+        style={{
+          fontSize: 10,
+          letterSpacing: '0.18em',
+          color: 'var(--ink-soft)',
+        }}
+      >
+        {label}
+      </label>
+      {textarea ? (
+        <textarea
+          placeholder={placeholder}
+          style={{ ...baseStyle, resize: 'vertical', minHeight: 80 }}
+          onFocus={(e) => (e.currentTarget.style.borderColor = 'var(--accent)')}
+          onBlur={(e) => (e.currentTarget.style.borderColor = 'var(--rule)')}
+        />
+      ) : (
+        <input
+          type={type}
+          placeholder={placeholder}
+          style={baseStyle}
+          onFocus={(e) => (e.currentTarget.style.borderColor = 'var(--accent)')}
+          onBlur={(e) => (e.currentTarget.style.borderColor = 'var(--rule)')}
+        />
+      )}
+    </div>
+  )
+}
+
+function InfoGroup({ label, children, small = false }) {
+  return (
+    <div className="mb-9">
+      <div className="ds-label mb-2">{label}</div>
+      <div
+        className="font-serif"
+        style={{
+          fontWeight: 500,
+          fontSize: small ? 16 : 22,
+          lineHeight: small ? 1.5 : 1.3,
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  )
+}
+
+export default function Contact() {
+  return (
+    <section
+      id="contact"
+      className="border-b"
+      style={{ borderColor: 'var(--rule)', padding: '96px 0' }}
+    >
+      <div className="ds-page">
+        <SectionHead
+          eyebrow="Contact us"
+          title={
+            <>
+              Get
+              <br />
+              in touch.
+            </>
+          }
+          description="Have a question or ready to get started? Fill in the form below and we'll get back to you promptly."
+        />
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
+          <div>
+            <InfoGroup label="Phone">+91 93064 12332</InfoGroup>
+            <InfoGroup label="Finance" small>
+              <a
+                href="mailto:finance@wayneenterprises.in"
+                className="hover:text-[color:var(--accent)] transition-colors"
+              >
+                finance@wayneenterprises.in
+              </a>
+            </InfoGroup>
+            <InfoGroup label="Address" small>
+              811/19, Nirala Nagar,
+              <br />
+              Near SJS Public School,
+              <br />
+              Raebareli, Uttar Pradesh — 229001
+            </InfoGroup>
+            <InfoGroup label="Business Hours" small>
+              Monday – Saturday
+              <br />
+              9:00 AM – 7:00 PM IST
+            </InfoGroup>
+            <InfoGroup label="Response time" small>
+              We typically respond to enquiries within a few hours.
+            </InfoGroup>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628]">Get in Touch</h2>
-          <p className="mt-4 text-gray-600 max-w-xl mx-auto">
-            Have a question or ready to get started? Fill in the form below and we&apos;ll get back to you promptly.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 items-start">
-          {/* Contact info */}
-          <div className="space-y-6">
-            <div className="bg-white rounded-2xl border border-gray-200 p-6">
-              <h3 className="font-semibold text-[#0A1628] mb-4">Contact Information</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#EFF6FF] flex items-center justify-center shrink-0">
-                    <Phone className="w-4 h-4 text-[#2563EB]" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-gray-400 mb-0.5">Phone</div>
-                    <a href="tel:+919306412332" className="text-sm font-medium text-[#0A1628] hover:text-[#2563EB] transition-colors">
-                      +91 93064 12332
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#EFF6FF] flex items-center justify-center shrink-0">
-                    <MapPin className="w-4 h-4 text-[#2563EB]" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-gray-400 mb-0.5">Address</div>
-                    <address className="text-sm text-gray-600 not-italic leading-relaxed">
-                      811/19, Nirala Nagar,<br />
-                      Near SJS Public School,<br />
-                      Raebareli, Uttar Pradesh — 229001
-                    </address>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-[#0A1628] rounded-2xl p-6 text-white">
-              <h4 className="font-semibold mb-2">Business Hours</h4>
-              <p className="text-blue-200/70 text-sm leading-relaxed">
-                Monday – Saturday<br />
-                9:00 AM – 7:00 PM IST
-              </p>
-              <p className="text-blue-200/70 text-sm mt-3">
-                We typically respond to enquiries within a few hours.
-              </p>
-            </div>
-          </div>
-
-          {/* Form */}
-          <div className="md:col-span-2 bg-white rounded-2xl border border-gray-200 p-8">
-            {submitted ? (
-              <div className="flex flex-col items-center justify-center py-12 text-center">
-                <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                  <CheckCircle className="w-7 h-7 text-[#2563EB]" />
-                </div>
-                <h3 className="text-lg font-semibold text-[#0A1628] mb-2">Message Sent!</h3>
-                <p className="text-sm text-gray-500 max-w-xs">
-                  Your mail client should have opened. We&apos;ll get back to you shortly.
-                </p>
-                <button
-                  onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', subject: '', message: '' }) }}
-                  className="mt-6 text-sm text-[#2563EB] hover:underline"
-                >
-                  Send another message
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-xs font-medium text-gray-600 mb-1.5">Full Name *</label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      value={form.name}
-                      onChange={handleChange}
-                      placeholder="Your name"
-                      className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]/20 transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium text-gray-600 mb-1.5">Email Address *</label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="you@company.com"
-                      className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]/20 transition-all"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-xs font-medium text-gray-600 mb-1.5">Phone Number</label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={form.phone}
-                      onChange={handleChange}
-                      placeholder="+91 00000 00000"
-                      className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]/20 transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium text-gray-600 mb-1.5">Subject</label>
-                    <input
-                      type="text"
-                      name="subject"
-                      value={form.subject}
-                      onChange={handleChange}
-                      placeholder="e.g. Google Workspace Setup"
-                      className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]/20 transition-all"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1.5">Message *</label>
-                  <textarea
-                    name="message"
-                    required
-                    rows={5}
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Tell us about your requirements..."
-                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]/20 transition-all resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-full text-sm font-medium transition-all disabled:opacity-70"
-                >
-                  {loading ? 'Opening mail client...' : 'Send Message'}
-                  <Send className="w-4 h-4" />
-                </button>
-              </form>
-            )}
-          </div>
+          <form
+            className="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-6"
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <Field label="Full Name *" placeholder="Your name" />
+            <Field label="Email Address *" type="email" placeholder="you@company.com" />
+            <Field label="Phone Number" placeholder="+91 00000 00000" />
+            <Field label="Subject" placeholder="e.g. Google Workspace Setup" />
+            <Field
+              label="Message *"
+              placeholder="Tell us about your requirements..."
+              full
+              textarea
+            />
+            <button
+              type="submit"
+              className="uppercase justify-self-start mt-3 cursor-pointer transition-colors"
+              style={{
+                gridColumn: '1 / -1',
+                padding: '14px 24px',
+                background: 'var(--accent)',
+                border: 'none',
+                color: '#f4f1ea',
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: '0.12em',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = '#233a2c')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--accent)')}
+            >
+              Send message
+            </button>
+          </form>
         </div>
       </div>
     </section>

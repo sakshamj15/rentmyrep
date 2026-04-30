@@ -1,75 +1,109 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import SectionHead from './SectionHead'
 
 const faqs = [
   {
     q: 'How fast is the setup turnaround?',
-    a: 'Standard requests are completed within 24 hours. Growth and Enterprise plans include SLA guarantees. Complex setups with multiple domains may take slightly longer — you\'ll receive an ETA upfront.',
+    a: 'Most single-domain setups are completed within 24 hours of receiving your request. Bulk imports of several hundred mailboxes are typically scheduled across 2–3 business days with milestone updates.',
   },
   {
     q: 'Which platforms do you support?',
-    a: 'We support Google Workspace and Microsoft 365 (formerly Office 365) for mailbox provisioning. For DNS, we work with all major registrars including Cloudflare, GoDaddy, Namecheap, Route 53, and more.',
+    a: 'Google Workspace and Microsoft 365 (Exchange Online), plus DNS configuration on every major registrar — GoDaddy, Cloudflare, Route 53, Namecheap, and the rest.',
   },
   {
     q: 'Do you handle DMARC enforcement or just monitoring?',
-    a: 'Both. We start with p=none monitoring, review the reports, then progressively move to p=quarantine and p=reject once we\'re confident the setup is clean. We handle the full rollout process.',
+    a: 'Both. We deploy DMARC starting at p=none for monitoring, analyse the RUA/RUF reports, fix any aligned-but-unauthorised senders, and roll forward to p=quarantine and p=reject when traffic is clean.',
   },
   {
     q: 'Is the API truly white-label?',
-    a: 'Yes. When you use the white_label: true flag in API requests, there is zero Wayne Enterprises branding in any customer-facing communication. Your customers see only your brand.',
+    a: "Yes — your end users never see our branding. Webhook payloads, dashboards and reports can be customised to your platform's identity.",
   },
   {
     q: 'What SLAs do you offer?',
-    a: 'Starter: 48-hour standard SLA. Growth: 24-hour SLA. Enterprise: Custom SLA with priority lanes. All SLAs are backed by service credits if missed.',
+    a: '99.9% deliverability on configured mailboxes, sub-24-hour setup on standard requests, and a four-hour first-response SLA for support tickets during business hours.',
   },
   {
     q: 'Can I assign a dedicated rep to my account?',
-    a: 'Yes, on Enterprise plans. Your dedicated rep learns your specific workflow, customer segments, and preferences — leading to faster turnarounds and fewer back-and-forth clarifications over time.',
+    a: 'Yes. On managed plans you get a named technical lead who knows your domain estate, sender behaviour and integration setup — and stays with you through audits and changes.',
   },
 ]
 
-function FAQItem({ q, a }) {
-  const [open, setOpen] = useState(false)
-
-  return (
-    <div className="border-b border-gray-200 last:border-0">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between py-5 text-left gap-4"
-      >
-        <span className="font-medium text-[#0A1628] text-sm md:text-base">{q}</span>
-        <ChevronDown
-          className={`w-5 h-5 text-gray-400 shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
-        />
-      </button>
-      {open && (
-        <div className="pb-5 pr-8">
-          <p className="text-sm text-gray-600 leading-relaxed">{a}</p>
-        </div>
-      )}
-    </div>
-  )
-}
-
 export default function FAQ() {
-  return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-6xl w-full border-x border-gray-200 border-dashed px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center px-3 py-1 rounded-full border border-blue-200 bg-blue-50 text-[#2563EB] text-xs font-semibold uppercase tracking-wider mb-4">
-            FAQ
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628]">
-            Common Questions
-          </h2>
-        </div>
+  const [openIdx, setOpenIdx] = useState(0)
 
-        <div className="max-w-3xl mx-auto bg-white rounded-2xl border border-gray-200 px-6 md:px-8 divide-y divide-gray-200">
-          {faqs.map((item) => (
-            <FAQItem key={item.q} q={item.q} a={item.a} />
-          ))}
+  return (
+    <section
+      className="border-b"
+      style={{
+        borderColor: 'var(--rule)',
+        padding: '96px 0',
+        background: 'var(--bg-deep)',
+      }}
+    >
+      <div className="ds-page">
+        <SectionHead
+          eyebrow="FAQ"
+          title={
+            <>
+              Common
+              <br />
+              questions.
+            </>
+          }
+          description="If you don't see your question here, write to us — we typically reply within a few hours."
+        />
+        <div style={{ borderTop: '1px solid var(--rule)' }}>
+          {faqs.map((f, idx) => {
+            const open = openIdx === idx
+            return (
+              <div
+                key={idx}
+                onClick={() => setOpenIdx(open ? -1 : idx)}
+                className="cursor-pointer"
+                style={{
+                  borderBottom: '1px solid var(--rule)',
+                  padding: '24px 0',
+                }}
+              >
+                <div
+                  className="font-serif flex justify-between items-center"
+                  style={{
+                    fontWeight: 500,
+                    fontSize: 24,
+                    color: 'var(--ink)',
+                  }}
+                >
+                  {f.q}
+                  <span
+                    className="font-mono-ds"
+                    style={{
+                      fontSize: 18,
+                      color: 'var(--accent)',
+                      transition: 'transform .2s',
+                      transform: open ? 'rotate(45deg)' : 'rotate(0)',
+                      display: 'inline-block',
+                    }}
+                  >
+                    +
+                  </span>
+                </div>
+                <div
+                  style={{
+                    overflow: 'hidden',
+                    maxHeight: open ? 280 : 0,
+                    transition: 'max-height .25s ease, padding-top .25s ease',
+                    paddingTop: open ? 14 : 0,
+                    color: 'var(--ink-soft)',
+                    fontSize: 14.5,
+                  }}
+                >
+                  {f.a}
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>

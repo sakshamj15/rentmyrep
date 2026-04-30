@@ -1,7 +1,7 @@
-'use client'
-
+import UtilityBar from '@/components/UtilityBar'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
+import Stats from '@/components/Stats'
 import Services from '@/components/Services'
 import AboutUs from '@/components/AboutUs'
 import WhyChooseUs from '@/components/WhyChooseUs'
@@ -13,8 +13,10 @@ import Footer from '@/components/Footer'
 export default function Home() {
   return (
     <main>
+      <UtilityBar />
       <Header />
       <Hero />
+      <Stats />
       <Services />
       <AboutUs />
       <WhyChooseUs />
