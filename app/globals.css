@@ -68,3 +68,103 @@ a {
     padding: 0 24px;
   }
 }
+
+/* Component-level hover styles (kept in CSS so components stay Server Components) */
+.ds-btn-primary {
+  padding: 14px 24px;
+  background: var(--accent);
+  color: #f4f1ea;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: background 0.15s;
+  border: none;
+  cursor: pointer;
+}
+.ds-btn-primary:hover {
+  background: #233a2c;
+}
+
+.ds-btn-ghost {
+  padding: 14px 24px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: background 0.15s, color 0.15s;
+}
+.ds-btn-ghost:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.ds-cta-pill {
+  padding: 10px 20px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: background 0.15s;
+}
+.ds-cta-pill:hover {
+  background: var(--accent);
+}
+
+.ds-service-card {
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 32px 28px 36px;
+  background: var(--paper);
+  transition: background 0.18s;
+}
+.ds-service-card:hover {
+  background: var(--bg-deep);
+}
+
+.ds-form-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+  font-size: 15px;
+  padding: 10px 0;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+.ds-form-input:focus {
+  border-color: var(--accent);
+}
+.ds-form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.ds-form-submit {
+  padding: 14px 24px;
+  background: var(--accent);
+  border: none;
+  color: #f4f1ea;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.ds-form-submit:hover {
+  background: #233a2c;
+}
+
+.ds-utility-link:hover,
+.ds-footer-link:hover {
+  color: #f4f1ea;
+}

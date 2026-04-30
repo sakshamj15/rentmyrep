@@ -160,46 +160,10 @@ export default function Hero() {
               professionals. No templates, no abandoned tickets.
             </p>
             <div className="flex flex-wrap gap-3.5 items-center">
-              <a
-                href="#contact"
-                className="uppercase transition-colors"
-                style={{
-                  padding: '14px 24px',
-                  background: 'var(--accent)',
-                  color: '#f4f1ea',
-                  fontSize: 13,
-                  fontWeight: 500,
-                  letterSpacing: '0.08em',
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.background = '#233a2c')
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.background = 'var(--accent)')
-                }
-              >
+              <a href="#contact" className="ds-btn-primary">
                 Get in touch
               </a>
-              <a
-                href="#services"
-                className="uppercase transition-colors"
-                style={{
-                  padding: '14px 24px',
-                  border: '1px solid var(--ink)',
-                  color: 'var(--ink)',
-                  fontSize: 13,
-                  fontWeight: 500,
-                  letterSpacing: '0.08em',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'var(--ink)'
-                  e.currentTarget.style.color = 'var(--bg)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'transparent'
-                  e.currentTarget.style.color = 'var(--ink)'
-                }}
-              >
+              <a href="#services" className="ds-btn-ghost">
                 View services →
               </a>
             </div>

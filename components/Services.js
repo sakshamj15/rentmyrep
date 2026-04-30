@@ -80,22 +80,7 @@ export default function Services() {
           {services.map((s, idx) => {
             const num = String(idx + 1).padStart(2, '0')
             return (
-              <article
-                key={idx}
-                className="transition-colors group"
-                style={{
-                  borderRight: '1px solid var(--rule)',
-                  borderBottom: '1px solid var(--rule)',
-                  padding: '32px 28px 36px',
-                  background: 'var(--paper)',
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.background = 'var(--bg-deep)')
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.background = 'var(--paper)')
-                }
-              >
+              <article key={idx} className="ds-service-card">
                 <span
                   className="font-mono-ds"
                   style={{
